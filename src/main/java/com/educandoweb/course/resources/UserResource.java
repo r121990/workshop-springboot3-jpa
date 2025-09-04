@@ -1,3 +1,5 @@
+//Endpoints
+
 package com.educandoweb.course.resources;
 
 import java.net.URI;
@@ -15,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.educandoweb.course.CourseApplication;
 import com.educandoweb.course.entities.User;
 import com.educandoweb.course.services.UserService;
 
@@ -23,14 +24,8 @@ import com.educandoweb.course.services.UserService;
 @RequestMapping(value = "/users")
 public class UserResource {
 
-	private final CourseApplication courseApplication;
-
 	@Autowired // injeção de dependência transparente ao programador
 	private UserService service;
-
-	UserResource(CourseApplication courseApplication) {
-		this.courseApplication = courseApplication;
-	}
 
 	@GetMapping // método http de requisição do tipo getting no padrão REST
 	public ResponseEntity<List<User>> findAll() { // método endpoint para acessar os usuários
