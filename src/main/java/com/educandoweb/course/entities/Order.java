@@ -7,7 +7,6 @@ import java.util.Objects;
 import java.util.Set;
 
 import com.educandoweb.course.entities.enums.OrderStatus;
-import com.educandoweb.course.entities.pk.Payment;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.CascadeType;
@@ -102,6 +101,14 @@ public class Order implements Serializable {
 
 	public Set<OrderItem> getItems() {
 		return items;
+	}
+	
+	public Double getTotal() {
+		double sum = 0.0;
+		for (OrderItem x : items) {
+			sum += x.getSubTotal();
+		}
+		return sum;
 	}
 	
 	@Override
